@@ -41,6 +41,8 @@ const App = () => {
     setRemark(e.target.value);
     if(interpretations.includes(e.target.value)) {
       setRemark(emojis[interpretations.indexOf(e.target.value)]);
+    } else if(emojis.includes(e.target.value)) {
+      setRemark(emojiObj[e.target.value]);
     }
   }
 
@@ -57,8 +59,8 @@ const App = () => {
         <p>{text}</p>
         <div className='emoji'>
           {
-            emojis.map(emoji => {
-              return <div className="emojis" onClick={clickHandler}>{emoji}</div>
+            emojis.map((emoji, index) => {
+              return <div key={index} className="emojis" onClick={clickHandler}>{emoji}</div>
             })
           }
         </div>
